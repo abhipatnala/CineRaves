@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
   get   '/login', :to => 'sessions#new', :as => :login
-match '/auth/:provider/callback', :to => 'pages#index',:via => [:get,:post]
+match '/auth/:provider/callback', :to => 'sessions#create',:via => [:get,:post]
 match '/auth/failure', :to => 'sessions#failure',:via => [:get,:post]
 
 match 'pages/oAuth' => 'pages#oAuth', :as => :newbill, :via => [:get]
