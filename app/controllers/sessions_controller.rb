@@ -4,6 +4,9 @@ class SessionsController < ApplicationController
 
  
 
+
+ 
+
   def failure
   end
 end
