@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
   get   '/login', :to => 'sessions#new', :as => :login
-match '/auth/trakt/callback', :to => 'sessions#create',:via => [:get,:post]
+match '/auth/verify', :to => 'sessions#create',:via => [:get,:post]
 match '/auth/failure', :to => 'sessions#failure',:via => [:get,:post]
 
 match 'pages/oAuth' => 'pages#oAuth', :as => :newbill, :via => [:get]
