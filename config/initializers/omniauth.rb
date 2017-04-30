@@ -1,3 +1,3 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :trakt, '6b938c19460b1a087e44da2131d779933d168f6e5ec10c6fae3ea48212e084d4', '5e1c6d482224119ba52e794f7f8aaf8a9a08fc7fb612efd0c23b87dda7a1fad1'
+  provider :trakt, 'c64414858aa29c01a150739d54a71e770a90a676bbff6ed9330b7652685dde4e', '45b6837e4bc58b33b187a014e92cd0cfac6bd388ab03f5f40f2b2c08977b6cee'
 end
