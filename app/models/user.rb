@@ -4,5 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable,:omniauthable
 
-        
+       def find_for_trakt
+       	
+        	
+        end 
 end
