@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
 
-	 attr_accessible :UserId,:MovieId,:description
+	 attr_accessor :UserId,:MovieId,:description
      validates :description, :presence => true
 	 belongs_to :user
 end
