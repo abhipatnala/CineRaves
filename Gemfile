@@ -27,7 +27,8 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-
+gem 'oauth2'
+gem 'rest-client'
 
 gem 'omniauth-trakt'
 gem 'devise'
@@ -36,7 +37,7 @@ gem 'jquery-turbolinks'
 
 gem 'autoprefixer-rails'
 
-
+gem 'ratyrate'
 
 gem 'bootstrap-sass'
 

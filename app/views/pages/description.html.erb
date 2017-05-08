@@ -1,0 +1,75 @@
+<% content_for :movieDesc do %>
+
+
+<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-4">
+        <%= image_tag (image_url(@movie["Poster"])), class: "some css class here" %>
+         </div>
+ <div class="col-md-6">
+        <div class="table-responsive">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td><strong>Title:</strong></td>
+                <td><%= @movie["Title"] %> </td>
+              </tr>
+              <tr>
+                <td><strong>Description:</strong></td>
+                <td><%= @movie["Plot"] %></td>
+              </tr>
+              <tr>
+                <td><strong>Movie length:</strong></td>
+                <td><%= @movie["Runtime"] %></td>
+              </tr>
+              <tr>
+                <td><strong>Director:</strong></td>
+                <td><%= @movie["Director"] %> </td>
+              </tr>
+              <tr>
+              <tr>
+                <td><strong>Writer:</strong></td>
+                <td><%= @movie["Writer"] %> </td>
+              </tr>
+              <tr>
+                <td><strong>Actors:</strong></td>
+                <td><%= @movie["Actors"] %> </td>
+              </tr>
+              <tr>
+                <td><strong>Genre:</strong></td>
+                <td><%= @movie["Genre"] %> </td>
+              </tr>
+              <tr>
+                <td ><strong>IMDB Rating:</strong></td>
+                <td id="IMDB"> <%= @movie["imdbRating"] %></td>
+                
+                
+                
+              </tr>
+            </tbody>
+          </table>
+        </div>
+     </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-group row">
+  <div class="col-sm-10">
+   
+  </div>
+</div>
+<script>
+
+ $(function () {
+ 
+  $("#IMDB").rateYo({
+    rating: ($('#IMDB').text())/2,
+    readOnly: true
+  });
+});
+</script>
+
+   <% end %>

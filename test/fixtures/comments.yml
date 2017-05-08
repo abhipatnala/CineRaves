@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  UserId: 1
+  MoiveId: MyString
+  description: MyText
+
+two:
+  UserId: 1
+  MoiveId: MyString
+  description: MyText
