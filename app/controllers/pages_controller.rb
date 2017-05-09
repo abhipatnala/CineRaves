@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
 
-session[:token]=""
+
   def index
   
   if(Token.count ==0)
@@ -28,7 +28,7 @@ redirect_to :action => 'home'
   	  def home
 
 
-  	  	if(session[:token]!="" )
+  	  	if(session[:token].nil?)
           puts session[:token]
   	  	
         require 'uri'
