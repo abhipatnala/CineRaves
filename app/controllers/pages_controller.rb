@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
-@AuthToken=""
 
+session[:token]=""
   def index
   
   if(Token.count ==0)
@@ -28,7 +28,8 @@ redirect_to :action => 'home'
   	  def home
 
 
-  	  	if(session[:token]=='nil' )
+  	  	if(session[:token]!='nil' )
+          puts session[:token]
   	  	
         require 'uri'
         require 'net/http'
@@ -44,7 +45,7 @@ redirect_to :action => 'home'
           }
           request = RestClient.post "https://api.trakt.tv/oauth/token", body.to_json, content_type: 'application/json'
           @AuthToken = JSON.parse(request.body)
-
+puts @AuthToken.to_s
           apptoken= Token.create(value: @AuthToken["access_token"].to_s)
           session[:token]=@AuthToken["access_token"].to_s
           apptoken.save
