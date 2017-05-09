@@ -28,7 +28,7 @@ redirect_to :action => 'home'
   	  def home
 
 
-  	  	if(session[:token]!='nil' )
+  	  	if(session[:token]!="" )
           puts session[:token]
   	  	
         require 'uri'
