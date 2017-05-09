@@ -7,6 +7,13 @@
     <div class="row">
       <div class="col-md-4">
         <%= image_tag (image_url(@movie["Poster"])), class: "some css class here" %>
+        <div class ="row">
+
+         <%= submit_tag("Add to my WatchList", class: "btn btn-success btn-md" ) %> 
+         </div>
+         <div>
+          <%= submit_tag("Not Intrested", class: "btn btn-danger btn-md" ) %> 
+         </div>
          </div>
  <div class="col-md-6">
         <div class="table-responsive">
@@ -48,6 +55,14 @@
                 
                 
               </tr>
+              <tr>
+
+              <%= form_tag(controller: "sessions", action: "save_comments" ,method: "post") do %>
+       <td> <%= label_tag(:q, "Comment:") %> </td>
+ <td><%= text_area_tag(:message, "", size: "60x6" ,placeholder: "comments") %> </td>
+  <td><%= submit_tag("comment", class: "btn btn-primary btn-md" ) %> </td>
+<% end %>
+</tr>
             </tbody>
           </table>
         </div>

@@ -29,7 +29,7 @@ redirect_to :action => 'home'
 
 
   	  	if(session[:token].nil?)
-          puts session[:token]
+        
   	  	
         require 'uri'
         require 'net/http'
@@ -45,7 +45,7 @@ redirect_to :action => 'home'
           }
           request = RestClient.post "https://api.trakt.tv/oauth/token", body.to_json, content_type: 'application/json'
           @AuthToken = JSON.parse(request.body)
-puts @AuthToken.to_s
+
           apptoken= Token.create(value: @AuthToken["access_token"].to_s)
           session[:token]=@AuthToken["access_token"].to_s
           apptoken.save
@@ -118,8 +118,15 @@ puts @AuthToken.to_s
          
         end
 def description
+
+	if user_signed_in?
      @movie= JSON.parse (RestClient.get "http://www.omdbapi.com/?i="+params[:mid].to_s)
+
+ else
+ 	redirect_to new_user_session_path
     
      end
+
+ end
 
 end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 devise_for :users
 match '/auth/failure', :to => 'sessions#failure',:via => [:get,:post]
 
+match 'sessions/save_comments', :to => 'sessions#save_comments',:via => [:post]
 
   
   get 'pages/index'
