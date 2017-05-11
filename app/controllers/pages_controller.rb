@@ -145,8 +145,67 @@ response = http.request(request)
 
     
     end
-    #@TopAction = @ActionArray.slice(1,10)
-     # session[:Action]=@ActionArray
+
+require 'uri'
+require 'net/http'
+#pulling data from tmdb
+url = URI("https://api.themoviedb.org/3/genre/35/movies?sort_by=created_at.asc&include_adult=false&language=en-US&api_key=a96bdb679a0a1362924e249a1d5fa048")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+request.body = "{}"
+
+response = http.request(request)
+@ComedyArray =[]
+      list =JSON.parse(response.body)
+
+      @ComedyMovies=list["results"]
+            @ComedyMovies.take(10).each do |key, value|
+
+      	sol = "https://api.themoviedb.org/3/movie/"+key['id'].to_s+"?api_key=a96bdb679a0a1362924e249a1d5fa048"
+      	
+      #puts key['movie']['ids']['imdb']
+     ids=JSON.parse (RestClient.get "https://api.themoviedb.org/3/movie/"+key['id'].to_s+"?api_key=a96bdb679a0a1362924e249a1d5fa048")
+
+      @ComedyArray.push (JSON.parse (RestClient.get "http://www.omdbapi.com/?i="+ids["imdb_id"].to_s))
+
+    
+    end
+    require 'uri'
+require 'net/http'
+#pulling data from tmdb
+url = URI("https://api.themoviedb.org/3/genre/27/movies?sort_by=created_at.asc&include_adult=false&language=en-US&api_key=a96bdb679a0a1362924e249a1d5fa048")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+request.body = "{}"
+
+response = http.request(request)
+@HorrorArray =[]
+      list =JSON.parse(response.body)
+
+      @HorrorMovies=list["results"]
+            @HorrorMovies.take(10).each do |key, value|
+
+      	sol = "https://api.themoviedb.org/3/movie/"+key['id'].to_s+"?api_key=a96bdb679a0a1362924e249a1d5fa048"
+      	
+      #puts key['movie']['ids']['imdb']
+     ids=JSON.parse (RestClient.get "https://api.themoviedb.org/3/movie/"+key['id'].to_s+"?api_key=a96bdb679a0a1362924e249a1d5fa048")
+
+      @HorrorArray.push (JSON.parse (RestClient.get "http://www.omdbapi.com/?i="+ids["imdb_id"].to_s))
+
+    
+    end
+
+
+
+   
         end
 def description
 
