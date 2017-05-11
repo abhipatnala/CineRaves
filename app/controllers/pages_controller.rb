@@ -155,7 +155,7 @@ def description
     params[:mid]=session[:mid]
   end
      @movie= JSON.parse (RestClient.get "http://www.omdbapi.com/?i="+params[:mid].to_s)
-     @comments =Comment.where(MovieId: @movie['imdbID'] ).pluck(:UserId, :description)
+     @comments =Comment.where(MovieId: params[:mid] ).pluck(:UserId, :description)
      byebug
 #@full=Hash.new
      #@comments.each do |comment|
