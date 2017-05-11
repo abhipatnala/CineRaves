@@ -7,13 +7,40 @@
     <div class="row">
       <div class="col-md-4">
         <%= image_tag (image_url(@movie["Poster"])), class: "some css class here" %>
-        <div class ="row">
+       
 
-         <%= submit_tag("Add to my WatchList", class: "btn btn-success btn-md" ) %> 
-         </div>
-         <div>
-          <%= submit_tag("Not Intrested", class: "btn btn-danger btn-md" ) %> 
-         </div>
+        <%-if (Watchlist.where(UserId: 1,MovieId: params[:mid])).count == 0 %>
+          <div class ="row">
+            <%= form_tag(controller: "sessions", action: "Add_watchlist" ,method: "post") do %>
+              <input type="hidden" name="MovieID" value =<%= @movie['imdbID'] %>  ></td>
+              <%= submit_tag("Add to my WatchList", class: "btn btn-success btn-md" ) %>
+            <% end %>
+          </div>
+          <% else %>
+            <div class ="row">
+              <%= form_tag(controller: "sessions", action: "remove_watchlist" ,method: "post") do %>
+                <input type="hidden" name="MovieID" value =<%= @movie['imdbID'] %>  ></td>
+                <%= submit_tag("remove from my WatchList", class: "btn btn-danger btn-md" ) %> 
+              <% end %>
+              </div>
+          <%end %>
+
+          
+        <%-if (Nointrest.where(UserId: 1,MovieId: params[:mid])).count == 0 %>
+          <div class ="row">
+            <%= form_tag(controller: "sessions", action: "Not_intrested" ,method: "post") do %>
+              <input type="hidden" name="MovieID" value =<%= @movie['imdbID'] %>  ></td>
+              <%= submit_tag("Not intrested", class: "btn btn-danger btn-md" ) %>
+            <% end %>
+          </div>
+          <% else %>
+            <div class ="row">
+              <%= form_tag(controller: "sessions", action: "remove_not_intrested" ,method: "post") do %>
+                <input type="hidden" name="MovieID" value =<%= @movie['imdbID'] %>  ></td>
+                <%= submit_tag("remove from not intrested list", class: "btn btn-success btn-md" ) %> 
+              <% end %>
+              </div>
+          <%end %>
          </div>
  <div class="col-md-6">
         <div class="table-responsive">
@@ -59,8 +86,10 @@
 
               <%= form_tag(controller: "sessions", action: "save_comments" ,method: "post") do %>
        <td> <%= label_tag(:q, "Comment:") %> </td>
- <td><%= text_area_tag(:message, "", size: "60x6" ,placeholder: "comments") %> </td>
+ <td><%= text_area_tag(:message, "", size: "60x6" ,placeholder: "comments") %> 
+  <input type="hidden" name="MovieID" value =<%= @movie['imdbID'] %>  ></td>
   <td><%= submit_tag("comment", class: "btn btn-primary btn-md" ) %> </td>
+
 <% end %>
 </tr>
             </tbody>
@@ -69,13 +98,40 @@
      </div>
     </div>
   </div>
-</div>
+</div> 
+<% @comments.each do |comment| %>
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
 
-<div class="form-group row">
-  <div class="col-sm-10">
-   
-  </div>
+</div><!-- /col-sm-12 -->
+</div><!-- /row -->
+<div class="row">
+<div class="col-sm-1">
+<div class="thumbnail">
+<img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+</div><!-- /thumbnail -->
+</div><!-- /col-sm-1 -->
+
+<div class="col-sm-5">
+<div class="panel panel-default">
+<div class="panel-heading">
+<strong><%=comment[0]%>: </strong> 
 </div>
+<div class="panel-body">
+<%= comment[1] %>
+</div><!-- /panel-body -->
+</div><!-- /panel panel-default -->
+</div><!-- /col-sm-5 -->
+
+
+
+
+</div><!-- /row -->
+
+</div><!-- /container -->
+<% end %>
+
 <script>
 
  $(function () {

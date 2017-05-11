@@ -98,7 +98,6 @@ redirect_to :action => 'home'
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
       request = Net::HTTP::Get.new(url)
       request["content-type"] = 'application/json'
       request["trakt-api-version"] = '2'
@@ -115,18 +114,97 @@ redirect_to :action => 'home'
 
      
     end
-         
+
+
+
+  require 'uri'
+require 'net/http'
+#pulling data from tmdb
+url = URI("https://api.themoviedb.org/3/genre/28/movies?sort_by=created_at.asc&include_adult=false&language=en-US&api_key=a96bdb679a0a1362924e249a1d5fa048")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+request.body = "{}"
+
+response = http.request(request)
+@ActionArray =[]
+      list =JSON.parse(response.body)
+
+      @ActionMovies=list["results"]
+            @ActionMovies.take(10).each do |key, value|
+
+      	sol = "https://api.themoviedb.org/3/movie/"+key['id'].to_s+"?api_key=a96bdb679a0a1362924e249a1d5fa048"
+      	
+      #puts key['movie']['ids']['imdb']
+     ids=JSON.parse (RestClient.get "https://api.themoviedb.org/3/movie/"+key['id'].to_s+"?api_key=a96bdb679a0a1362924e249a1d5fa048")
+
+      @ActionArray.push (JSON.parse (RestClient.get "http://www.omdbapi.com/?i="+ids["imdb_id"].to_s))
+
+    
+    end
+    #@TopAction = @ActionArray.slice(1,10)
+     # session[:Action]=@ActionArray
         end
 def description
 
 	if user_signed_in?
+  if(params[:mid].inspect=="nil")
+    params[:mid]=session[:mid]
+  end
      @movie= JSON.parse (RestClient.get "http://www.omdbapi.com/?i="+params[:mid].to_s)
+     @comments =Comment.where(MovieId: @movie['imdbID'] ).pluck(:UserId, :description)
+@full=Hash.new
+     #@comments.each do |comment|
 
+
+      #@full=User.joins(:Comment).where("User.UserId= Comment.UserId")
  else
  	redirect_to new_user_session_path
     
      end
 
  end
+
+
+ 
+ def viewall
+ 	if user_signed_in?
+require 'uri'
+require 'net/http'
+#pulling data from tmdb
+url = URI("https://api.themoviedb.org/3/genre/"+params[:type].to_s+"/movies?sort_by=created_at.asc&include_adult=false&language=en-US&api_key=a96bdb679a0a1362924e249a1d5fa048")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+request.body = "{}"
+
+response = http.request(request)
+@ViewArray =[]
+      list =JSON.parse(response.body)
+
+      @ViewMovies=list["results"]
+            @ViewMovies.each do |key, value|
+
+      	sol = "https://api.themoviedb.org/3/movie/"+key['id'].to_s+"?api_key=a96bdb679a0a1362924e249a1d5fa048"
+      	
+      #puts key['movie']['ids']['imdb']
+     ids=JSON.parse (RestClient.get "https://api.themoviedb.org/3/movie/"+key['id'].to_s+"?api_key=a96bdb679a0a1362924e249a1d5fa048")
+
+      @ViewArray.push (JSON.parse (RestClient.get "http://www.omdbapi.com/?i="+ids["imdb_id"].to_s))
+
+
+ end
+end
+else
+	redirect_to new_user_session_path
+    
+     end
+
 
 end

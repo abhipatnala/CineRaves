@@ -1,6 +1,7 @@
     <% content_for :trend2 do %>
 
-   
+    <%= button_to "ViewAll", ViewAll_path(:type => "28" )%>
+  
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
     <% count =0 %>
@@ -122,5 +123,49 @@
       <span class="sr-only">Next</span>
     </a>
     </div>
-  
+
+    <div id="ActionCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+    <% count =0 %>
+    <%  @ActionArray.each_slice(3).each do |i|   %>
+    <% count =count+1  %>
+      <li data-target="#Boxofficecarousel" data-slide-to= '<%= "#{count}"%>' class="<%= 'active' if count == 1 %>"> </li>
+    <% end %>
+    </ol>
+    <h2> hello </h2>
+    <div class="carousel-inner carouselHeight"> 
+    <% count2 =1 %>
+    <%  @ActionArray.each_slice(3) do |movies| %>
+    <div class="item <%= 'active' if count2 == 1 %>">
+    <% count2 =count2+1 %>
+   
+    <div class="row">
+       
+        <% movies.each do |movie| %>
+        <div  class="col-sm-3 col-xs-6 hover-cover"> <%= image_tag (image_url(movie["Poster"]))%>
+                    <div class="carousel-caption">This is a caption </div>
+                </div>
+        <% end %>
+      </div>
+
+      </div>
+    <% end %>
+
+    </div>
+ <a class="left carousel-control arrow" href="#ActionCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#ActionCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
     <%end%>
+
+
+
+
+
+
+
+

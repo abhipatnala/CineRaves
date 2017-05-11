@@ -41,6 +41,10 @@ gem 'ratyrate'
 
 gem 'bootstrap-sass'
 
+gem 'omniauth'
+gem 'omniauth-google-oauth2' 
+
+gem 'google-api-client'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -52,6 +56,7 @@ gem 'bootstrap-sass'
 group :development, :test do
   gem 'sqlite3', '1.3.12'
   gem 'byebug',  '9.0.0', platform: :mri
+   gem "better_errors"
 end
 
 group :production do
