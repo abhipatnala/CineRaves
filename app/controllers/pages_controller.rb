@@ -171,21 +171,22 @@ def description
 
  
  def viewall
+
  	if user_signed_in?
-require 'uri'
-require 'net/http'
+ require 'uri'
+ require 'net/http'
 #pulling data from tmdb
-url = URI("https://api.themoviedb.org/3/genre/"+params[:type].to_s+"/movies?sort_by=created_at.asc&include_adult=false&language=en-US&api_key=a96bdb679a0a1362924e249a1d5fa048")
+ url = URI("https://api.themoviedb.org/3/genre/"+params[:type].to_s+"/movies?sort_by=created_at.asc&include_adult=false&language=en-US&api_key=a96bdb679a0a1362924e249a1d5fa048")
 
-http = Net::HTTP.new(url.host, url.port)
-http.use_ssl = true
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+ http = Net::HTTP.new(url.host, url.port)
+ http.use_ssl = true
+ http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-request = Net::HTTP::Get.new(url)
-request.body = "{}"
+ request = Net::HTTP::Get.new(url)
+ request.body = "{}"
 
-response = http.request(request)
-@ViewArray =[]
+ response = http.request(request)
+ @ViewArray =[]
       list =JSON.parse(response.body)
 
       @ViewMovies=list["results"]
@@ -200,11 +201,11 @@ response = http.request(request)
 
 
  end
-end
+
 else
 	redirect_to new_user_session_path
     
      end
-
+end
 
 end
