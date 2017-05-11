@@ -17,7 +17,7 @@ redirect_to  :controller => 'pages', :action => 'description'
  end
 def Add_watchlist
 	watch = Watchlist.new
-	watch.UserId=current_user.id
+	watch.UserId=current_user.id.to_s
 	watch.MovieId=params[:MovieID]
 	watch.save
    session[:mid]=params[:MovieID]
@@ -25,7 +25,7 @@ def Add_watchlist
 end
 def Not_intrested
 	dislike =Nointrest.new
-	dislike.UserId=current_user.id
+	dislike.UserId=current_user.id.to_s
 	dislike.MovieId=params[:MovieID]
 	dislike.save
  session[:mid]=params[:MovieID]
@@ -33,21 +33,21 @@ def Not_intrested
 end
  def remove_watchlist
  
- 	Watchlist.where(UserId:current_user.id,MovieId:params[:MovieID]).destroy_all
+ 	Watchlist.where(UserId:current_user.id.to_s,MovieId:params[:MovieID]).destroy_all
  	session[:mid]=params[:MovieID]
 	redirect_to  :controller => 'pages', :action => 'description'
  end 
  def remove_not_intrested
- 	Nointrest.where(UserId: current_user.id,MovieId: params[:MovieID]).destroy_all
+ 	Nointrest.where(UserId: current_user.id.to_s,MovieId: params[:MovieID]).destroy_all
  	session[:mid]=params[:MovieID]
 	redirect_to  :controller => 'pages', :action => 'description'
 end
 
 def viewlist
 	if(params[:listtype]=="1")
-	list=Watchlist.where(UserId:current_user.id).pluck(:MovieId)
+	list=Watchlist.where(UserId:current_user.id.to_s).pluck(:MovieId)
 else
-	list=Nointrest.where(UserId:current_user.id).pluck(:MovieId)
+	list=Nointrest.where(UserId:current_user.id.to_s).pluck(:MovieId)
 end
 list.each do |key|
       #puts key['movie']['ids']['imdb']
