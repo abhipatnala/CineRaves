@@ -5,8 +5,8 @@ class SessionsController < ApplicationController
 
  def save_comments
 com= Comment.new
-com.UserId =1
-#com.UserId =current_user.UserId
+#com.UserId =1
+com.UserId =current_user.id.to_s
 com.MovieId=params[:MovieID]
 com.description =params[:message]
 
@@ -44,6 +44,7 @@ end
 end
 
 def viewlist
+	@WatchlistArray=[]
 	if(params[:listtype]=="1")
 	list=Watchlist.where(UserId:current_user.id.to_s).pluck(:MovieId)
 else
