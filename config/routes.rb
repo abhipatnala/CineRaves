@@ -18,7 +18,7 @@ match 'sessions/remove_not_intrested', :to => 'sessions#remove_not_intrested',:v
   get '/cineraves/code_callback', :to => 'pages#home', :as => :cineraves_code
 get '/cineraves/description', :to=>'pages#description', :as => :description
 match '/cineraves/ViewAll', :to=>'pages#viewall', :as => :ViewAll , :via => [:get,:post]
-
+match '/cineraves/viewlist', :to => 'sessions#viewlist',  :as => :viewlist, :via => [:get,:post]
   root  'pages#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

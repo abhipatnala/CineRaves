@@ -29,9 +29,11 @@
       
       <ul class="nav navbar-nav pull-right">
         <% if user_signed_in? %>
+        <li> <%= link_to "MyWatchList", viewlist_path(:listtype => "1" )%> </li>
+        <li> <%= link_to "Disliked", viewlist_path(:listtype => "2" )%> </li>
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              <%= current_user.name %>
+             
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
