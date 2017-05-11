@@ -99,6 +99,12 @@
     </div>
   </div>
 </div> 
+<% if @comments.inspect =='nil' %>
+<h3 style="text-align:center;">
+    No Comments Yet<br />
+   
+</h1>
+<%else %>
 <% @comments.each do |comment| %>
 <div class="container">
 <div class="row">
@@ -131,7 +137,7 @@
 
 </div><!-- /container -->
 <% end %>
-
+<% end %>
 <script>
 
  $(function () {
