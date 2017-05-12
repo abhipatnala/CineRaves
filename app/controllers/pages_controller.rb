@@ -66,9 +66,11 @@ redirect_to :action => 'home'
       request["trakt-api-version"] = '2'
       request["trakt-api-key"] = '6b938c19460b1a087e44da2131d779933d168f6e5ec10c6fae3ea48212e084d4'
       response = http.request(request)
+    
       @trendArray =[]
       @trendingMovies =JSON.parse(response.body)
       @trendingMovies.each do |key, value|
+
       #puts key['movie']['ids']['imdb']
       @trendArray.push (JSON.parse (RestClient.get "http://www.omdbapi.com/?i="+key['movie']['ids']['imdb'].to_s))
     end

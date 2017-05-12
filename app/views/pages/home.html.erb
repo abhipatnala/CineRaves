@@ -1,33 +1,28 @@
     <% content_for :trend2 do %>
 
-    <%= button_to "ViewAll", ViewAll_path(:type => "28" )%>
-
-    <%= button_to "ViewAll", ViewAll_path(:type => "35" )%>
-
-    <%= button_to "ViewAll", ViewAll_path(:type => "27" )%>
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <% count =0 %>
-        <% @trendArray.each_slice(3).each do |i|   %>
+        <%- @trendArray.each_slice(3).each do |i|   %>
         <% count =count+1  %>
         <li data-target="#mycarousel" data-slide-to= '<%= "#{count}"%>' class="<%= 'active' if count == 1 %>"> </li>
         <% end %>
       </ol>
-      <h2> hello </h2>
+      <h2> Trending Movies </h2>
       <div class="carousel-inner carouselHeight"> 
         <% count2 =1 %>
         <% @trendArray.each_slice(3) do |movies| %>
         <div class="item <%= 'active' if count2 == 1 %>">
           <% count2 =count2+1 %>
-          
+
           <div class="row">
-           
+
             <% movies.each do |movie| %>
             <div  class="col-sm-3 col-xs-6 hover-cover">
 
               <%= link_to description_path(:mid => movie['imdbID'].to_s) do %>
-              <%= image_tag (image_url(movie["Poster"])), class: "some css class here" %>
+              <%= image_tag (image_url(movie["Poster"]))   %>
               <% end %>
 
 
@@ -59,15 +54,15 @@
         <li data-target="#popularcarousel" data-slide-to= '<%= "#{count}"%>' class="<%= 'active' if count == 1 %>"> </li>
         <% end %>
       </ol>
-      <h2> hello </h2>
+      <h2> Popular Movies </h2>
       <div class="carousel-inner carouselHeight"> 
         <% count2 =1 %>
         <% @popularArray.each_slice(3) do |movies| %>
         <div class="item <%= 'active' if count2 == 1 %>">
           <% count2 =count2+1 %>
-          
+
           <div class="row">
-           
+
             <% movies.each do |movie| %>
             <div  class="col-sm-3 col-xs-6 hover-cover"> <%= image_tag (image_url(movie["Poster"]))%>
               <div class="carousel-caption">This is a caption </div>
@@ -98,15 +93,15 @@
         <li data-target="#Boxofficecarousel" data-slide-to= '<%= "#{count}"%>' class="<%= 'active' if count == 1 %>"> </li>
         <% end %>
       </ol>
-      <h2> hello </h2>
+      <h2> Box Office </h2>
       <div class="carousel-inner carouselHeight"> 
         <% count2 =1 %>
         <% @boxofficeArray.each_slice(3) do |movies| %>
         <div class="item <%= 'active' if count2 == 1 %>">
           <% count2 =count2+1 %>
-          
+
           <div class="row">
-           
+
             <% movies.each do |movie| %>
             <div  class="col-sm-3 col-xs-6 hover-cover"> <%= image_tag (image_url(movie["Poster"]))%>
               <div class="carousel-caption">This is a caption </div>
@@ -136,15 +131,15 @@
         <li data-target="#Boxofficecarousel" data-slide-to= '<%= "#{count}"%>' class="<%= 'active' if count == 1 %>"> </li>
         <% end %>
       </ol>
-      <h2> hello </h2>
+      <h2> Action </h2>
       <div class="carousel-inner carouselHeight"> 
         <% count2 =1 %>
         <%  @ActionArray.each_slice(3) do |movies| %>
         <div class="item <%= 'active' if count2 == 1 %>">
           <% count2 =count2+1 %>
-          
+
           <div class="row">
-           
+
             <% movies.each do |movie| %>
             <div  class="col-sm-3 col-xs-6 hover-cover"> <%= image_tag (image_url(movie["Poster"]))%>
               <div class="carousel-caption">This is a caption </div>
@@ -178,15 +173,15 @@
           <li data-target="#Comedycarousel" data-slide-to= '<%= "#{count}"%>' class="<%= 'active' if count == 1 %>"> </li>
           <% end %>
         </ol>
-        <h2> hello </h2>
+        <h2> Comedy </h2>
         <div class="carousel-inner carouselHeight"> 
           <% count2 =1 %>
           <%  @ComedyArray.each_slice(3) do |movies| %>
           <div class="item <%= 'active' if count2 == 1 %>">
             <% count2 =count2+1 %>
-            
+
             <div class="row">
-             
+
               <% movies.each do |movie| %>
               <div  class="col-sm-3 col-xs-6 hover-cover"> <%= image_tag (image_url(movie["Poster"]))%>
                 <div class="carousel-caption">This is a caption </div>
@@ -219,15 +214,15 @@
             <li data-target="#Comedycarousel" data-slide-to= '<%= "#{count}"%>' class="<%= 'active' if count == 1 %>"> </li>
             <% end %>
           </ol>
-          <h2> hello </h2>
+          <h2> Horror </h2>
           <div class="carousel-inner carouselHeight"> 
             <% count2 =1 %>
             <%  @HorrorArray.each_slice(3) do |movies| %>
             <div class="item <%= 'active' if count2 == 1 %>">
               <% count2 =count2+1 %>
-              
+
               <div class="row">
-               
+
                 <% movies.each do |movie| %>
                 <div  class="col-sm-3 col-xs-6 hover-cover"> <%= image_tag (image_url(movie["Poster"]))%>
                   <div class="carousel-caption">This is a caption </div>
@@ -254,13 +249,13 @@
             <%= button_to "ViewAll", ViewAll_path(:type => "27" ),class: "btn btn-primary" %>
           </div>
 
-          
+
         </div>
-        
+
         <%end%>
 
 
-        
+
 
 
 

@@ -247,11 +247,11 @@ Devise.setup do |config|
   # The "*/*" below is required to match Internet Explorer requests.
   # config.navigational_formats = ['*/*', :html]
 
-  # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = :delete
+    # The default HTTP method used to sign out a resource. Default is :delete.
+    config.sign_out_via = :delete
 
-  require 'omniauth-google-oauth2'
-config.omniauth :google_oauth2, "145091900204-68b4bq9860s1gt4higb4831ppv8mtj3b.apps.googleusercontent.com", "_1ErpjFX9qU9Eq8VBvEoh_t3", scope: "email,profile,offline", prompt: "consent"
+    #require 'omniauth-google-oauth2'
+ # config.omniauth :google_oauth2, "145091900204-68b4bq9860s1gt4higb4831ppv8mtj3b.apps.googleusercontent.com", "_1ErpjFX9qU9Eq8VBvEoh_t3", scope: "email,profile,offline", prompt: "consent"
 
 
 
