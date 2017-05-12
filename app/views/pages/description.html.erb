@@ -6,14 +6,15 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-md-4">
-        <%= image_tag (image_url(@movie["Poster"])), class:"imageclass" %>
-       
+        <%= image_tag (image_url(@movie["Poster"])), class:"descimage" %>
+        <br> 
 
         <%-if (Watchlist.where(UserId: 1,MovieId: params[:mid])).count == 0 %>
           <div class ="row">
             <%= form_tag(controller: "sessions", action: "Add_watchlist" ,method: "post") do %>
               <input type="hidden" name="MovieID" value =<%= @movie['imdbID'] %>  ></td>
               <%= submit_tag("Add to my WatchList", class: "btn btn-success btn-md" ) %>
+              <br>
             <% end %>
           </div>
           <% else %>
@@ -21,6 +22,7 @@
               <%= form_tag(controller: "sessions", action: "remove_watchlist" ,method: "post") do %>
                 <input type="hidden" name="MovieID" value =<%= @movie['imdbID'] %>  ></td>
                 <%= submit_tag("remove from my WatchList", class: "btn btn-danger btn-md" ) %> 
+                <br>
               <% end %>
               </div>
           <%end %>
