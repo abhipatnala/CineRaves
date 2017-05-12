@@ -167,7 +167,7 @@ response = http.request(request)
       @ComedyMovies=list["results"]
             @ComedyMovies.take(10).each do |key, value|
 
-      	sol = "https://api.themoviedb.org/3/movie/"+key['id'].to_s+"?api_key=a96bdb679a0a1362924e249a1d5fa048"
+      	#sol = "https://api.themoviedb.org/3/movie/"+key['id'].to_s+"?api_key=a96bdb679a0a1362924e249a1d5fa048"
       	
       #puts key['movie']['ids']['imdb']
      ids=JSON.parse (RestClient.get "https://api.themoviedb.org/3/movie/"+key['id'].to_s+"?api_key=a96bdb679a0a1362924e249a1d5fa048")

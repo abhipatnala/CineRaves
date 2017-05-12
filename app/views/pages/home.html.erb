@@ -64,7 +64,10 @@
           <div class="row">
 
             <% movies.each do |movie| %>
-            <div  class="col-sm-3 col-xs-6 hover-cover"> <%= image_tag (image_url(movie["Poster"]))%>
+            <div  class="col-sm-3 col-xs-6 hover-cover"> 
+              <%= link_to description_path(:mid => movie['imdbID'].to_s) do %>
+              <%= image_tag (image_url(movie["Poster"]))   %>
+              <% end %>
               <div class="carousel-caption">This is a caption </div>
             </div>
             <% end %>
@@ -103,7 +106,10 @@
           <div class="row">
 
             <% movies.each do |movie| %>
-            <div  class="col-sm-3 col-xs-6 hover-cover"> <%= image_tag (image_url(movie["Poster"]))%>
+            <div  class="col-sm-3 col-xs-6 hover-cover"> 
+              <%= link_to description_path(:mid => movie['imdbID'].to_s) do %>
+              <%= image_tag (image_url(movie["Poster"]))   %>
+              <% end %>
               <div class="carousel-caption">This is a caption </div>
             </div>
             <% end %>
@@ -141,7 +147,10 @@
           <div class="row">
 
             <% movies.each do |movie| %>
-            <div  class="col-sm-3 col-xs-6 hover-cover"> <%= image_tag (image_url(movie["Poster"]))%>
+            <div  class="col-sm-3 col-xs-6 hover-cover"> 
+              <%= link_to description_path(:mid => movie['imdbID'].to_s) do %>
+              <%= image_tag (image_url(movie["Poster"]))   %>
+              <% end %>
               <div class="carousel-caption">This is a caption </div>
             </div>
             <% end %>
@@ -183,7 +192,10 @@
             <div class="row">
 
               <% movies.each do |movie| %>
-              <div  class="col-sm-3 col-xs-6 hover-cover"> <%= image_tag (image_url(movie["Poster"]))%>
+              <div  class="col-sm-3 col-xs-6 hover-cover"> 
+              <%= link_to description_path(:mid => movie['imdbID'].to_s) do %>
+              <%= image_tag (image_url(movie["Poster"]))   %>
+              <% end %>
                 <div class="carousel-caption">This is a caption </div>
               </div>
               <% end %>
@@ -224,7 +236,10 @@
               <div class="row">
 
                 <% movies.each do |movie| %>
-                <div  class="col-sm-3 col-xs-6 hover-cover"> <%= image_tag (image_url(movie["Poster"]))%>
+                <div  class="col-sm-3 col-xs-6 hover-cover"> 
+              <%= link_to description_path(:mid => movie['imdbID'].to_s) do %>
+              <%= image_tag (image_url(movie["Poster"]))   %>
+              <% end %>
                   <div class="carousel-caption">This is a caption </div>
                 </div>
                 <% end %>
