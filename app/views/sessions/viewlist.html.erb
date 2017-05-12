@@ -7,14 +7,14 @@
 </h1>
 
 <%else %>
-    <%  @WatchlistArray.each_slice(3).each do |movies|   %>
+    <%  @WatchlistArray.each_slice(4).each do |movies|   %>
     	
     	 <div class="row">
        
         <% movies.each do |movie| %>
         <div  class="col-sm-3 col-xs-6 hover-cover"> 
         <%= link_to description_path(:mid => movie['imdbID'].to_s) do %>
-   <%= image_tag (image_url(movie["Poster"])), class: "some css class here" %>
+   <%= image_tag (image_url(movie["Poster"])), class:"imageclass" %>
 <% end %>
                     <div class="carousel-caption">This is a caption </div>
                 </div>
