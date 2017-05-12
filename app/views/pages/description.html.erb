@@ -6,7 +6,7 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-md-4">
-        <%= image_tag (image_url(@movie["Poster"])), class: "some css class here" %>
+        <%= image_tag (image_url(@movie["Poster"])), class:"imageclass" %>
        
 
         <%-if (Watchlist.where(UserId: 1,MovieId: params[:mid])).count == 0 %>

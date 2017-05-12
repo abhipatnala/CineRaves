@@ -235,7 +235,7 @@ def description
  
  def viewall
 
- 	if user_signed_in?
+ 	#if user_signed_in?
  require 'uri'
  require 'net/http'
 #pulling data from tmdb
@@ -265,10 +265,10 @@ def description
 
  end
 
-else
-	redirect_to new_user_session_path
+#else
+	#redirect_to new_user_session_path
     
-     end
+     #end
 end
 
 
